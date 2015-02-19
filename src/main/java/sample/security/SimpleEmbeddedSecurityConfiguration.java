@@ -13,15 +13,11 @@ package sample.security;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,15 +25,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import sample.Global;
 
 @Configuration
-@EnableAutoConfiguration
-@EnableWebSecurity
 @EnableWebMvcSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Qualifier(Global.AUTHENTICATION_DATA_QUALIFIER)
 public class SimpleEmbeddedSecurityConfiguration extends SecurityConfiguration
 {
 	@Bean(name = Global.AUTHENTICATION_DATA_QUALIFIER + "DataSource")
-	@Qualifier(Global.AUTHENTICATION_DATA_QUALIFIER)
 	public DataSource dataSource()
 	{
 		return new EmbeddedDatabaseBuilder().setName("authdb").setType(EmbeddedDatabaseType.H2).addScripts("security/schema.sql", "security/data.sql").build();

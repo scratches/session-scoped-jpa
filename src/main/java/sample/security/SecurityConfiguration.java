@@ -13,15 +13,9 @@ package sample.security;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -29,16 +23,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import sample.Global;
 
 @Configuration
-@EnableAutoConfiguration
-@EnableWebSecurity
 @EnableWebMvcSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Qualifier(Global.AUTHENTICATION_DATA_QUALIFIER)
-@Lazy
 public abstract class SecurityConfiguration extends WebSecurityConfigurerAdapter
 {
 	@Bean(name = Global.AUTHENTICATION_DATA_QUALIFIER + "DataSource")
-	@Qualifier(Global.AUTHENTICATION_DATA_QUALIFIER)
 	abstract DataSource dataSource();
 	
 	@Override
@@ -51,10 +39,4 @@ public abstract class SecurityConfiguration extends WebSecurityConfigurerAdapter
 		
 	}
 	
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception
-	{
-		// TODO Auto-generated method stub
-		return super.authenticationManagerBean();
-	}
 }
