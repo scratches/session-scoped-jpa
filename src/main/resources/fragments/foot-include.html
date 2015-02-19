@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<body>
+	<div th:fragment="foot-include">
+
+		<!-- JQuery -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" th:src="@{/webjars/jquery/2.0.3/jquery.js}" />
+
+		<!-- Angular JS -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js" th:src="@{/webjars/angularjs/1.3.11/angular.js}" />
+
+		<!-- Bootstrap Date Time Picker -->
+		<script th:src="@{/webjars/angular-bootstrap-datetimepicker/0.3.8/js/datetimepicker.js}" />
+
+		<!-- Bootstrap Validator -->
+		<script th:src="@{/webjars/bootstrapvalidator/0.5.3/js/bootstrapValidator.js}" />
+
+		<!-- Angular Bootstrap UI -->
+		<script th:src="@{/webjars/angular-ui-bootstrap/0.12.0/ui-bootstrap.js}" />
+
+		<!-- D3 Graphing -->
+		<!-- <script th:src="@{/webjars/d3js/3.5.3/webjars-requirejs.js}" /> -->
+		<script th:src="@{/webjars/d3js/3.5.3/d3.js}" />
+
+		<!-- Bootstrap Core JavaScript -->
+		<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.js}" />
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script th:src="@{/webjars/metisMenu/1.1.2/metisMenu.js}" />
+
+		<!-- DataTables JavaScript -->
+		<script th:src="@{/webjars/datatables/1.9.4/media/js/jquery.dataTables.js}" />
+		<script th:src="@{/webjars/datatables-plugins/ca6ec50/integration/bootstrap/3/dataTables.bootstrap.js}" />
+
+		<!-- Morris Charts JavaScript -->
+		<script th:src="@{/webjars/raphaeljs/2.1.2/raphael.js}" />
+		<script th:src="@{/webjars/morrisjs/0.5.1/morris.js}" />
+		<script th:src="@{/js/morris-data.js}" />
+
+		<!-- Metis Menu Plugin JavaScript -->
+		<script th:src="@{/webjars/metisMenu/1.1.2/metisMenu.js}" />
+
+		<!-- Custom Theme JavaScript -->
+		<script th:src="@{/js/sb-admin-2.js}" />
+	</div>
+</body>
+
+</html>
