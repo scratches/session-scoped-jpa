@@ -24,7 +24,7 @@ import sample.Global;
 import sample.persistence.force.Platform;
 
 @RepositoryRestResource(collectionResourceRel = "platforms", path = "platforms")
-@PersistenceUnit(name=Global.USER_SPECIFIC_DATA_QUALIFIER)
+// @PersistenceUnit(name=Global.USER_SPECIFIC_DATA_QUALIFIER)
 public interface PlatformRepository extends CrudRepository<Platform, Integer>
 {
 	@RestResource(path = "byPlatform")

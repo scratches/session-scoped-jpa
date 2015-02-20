@@ -22,7 +22,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Configuration
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class Global
 {
 	public final static String AUTHENTICATION_DATA_QUALIFIER = "auth";
@@ -42,6 +41,7 @@ public class Global
 	
 	@Bean
 	@Lazy
+	@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public boolean inDebugMode()
 	{
 		boolean isDebugging = false;
@@ -58,6 +58,7 @@ public class Global
 
 	@Bean(name = "sessionAuthentication")
 	@Lazy
+	@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public Authentication getSessionAuthentication()
 	{
 		return SecurityContextHolder.getContext().getAuthentication();
@@ -111,6 +112,7 @@ public class Global
 	 */
 	@Bean
 	@Lazy
+	@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public String getAppVersion()
 	{
 		return APP_VERSION;
@@ -123,6 +125,7 @@ public class Global
 	 */
 	@Bean
 	@Lazy
+	@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 	public String getAppRevision()
 	{
 		return APP_REVISION;
