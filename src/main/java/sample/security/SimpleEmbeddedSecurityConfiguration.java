@@ -18,15 +18,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import sample.Global;
 
 @Configuration
-@EnableWebMvcSecurity
-public class SimpleEmbeddedSecurityConfiguration extends SecurityConfiguration
+public class SimpleEmbeddedSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter
 {
 	@Bean(name = Global.AUTHENTICATION_DATA_QUALIFIER + "DataSource")
 	public DataSource dataSource()
@@ -35,7 +34,7 @@ public class SimpleEmbeddedSecurityConfiguration extends SecurityConfiguration
 	}
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception
+	public void init(AuthenticationManagerBuilder auth) throws Exception
 	{
 		auth.jdbcAuthentication().dataSource(dataSource()).passwordEncoder(passwordEncoder());
 	}

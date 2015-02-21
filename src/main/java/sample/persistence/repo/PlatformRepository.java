@@ -23,7 +23,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import sample.Global;
 import sample.persistence.force.Platform;
 
-@RepositoryRestResource(collectionResourceRel = "platforms", path = "platforms")
+@RepositoryRestResource
 // @PersistenceUnit(name=Global.USER_SPECIFIC_DATA_QUALIFIER)
 public interface PlatformRepository extends CrudRepository<Platform, Integer>
 {
