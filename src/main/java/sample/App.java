@@ -12,7 +12,12 @@
 package sample;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.endpoint.DataSourcePublicMetrics;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -27,6 +32,13 @@ public class App extends WebMvcConfigurerAdapter {
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/").setViewName("index");
+	}
+	
+	@Bean
+	@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
+	@Lazy
+	public DataSourcePublicMetrics dataSourcePublicMetrics() {
+		return new DataSourcePublicMetrics();
 	}
 
 }
